@@ -8,11 +8,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
-
-import static com.wolvesofhackstreet.arrow.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_main);
+        setContentView(R.layout.activity_main);
 
-        ParseAnalytics.trackAppOpenedInBackground(getIntent());
+    ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
         // If no user logged in, then open the login page
         /* After using any signup or login methods, the user is cached on disk. This cache can be
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton plusButton;
 
             plusButton= (FloatingActionButton) findViewById(R.id.plus);
-            plusButton.setOnClickListener(new View.OnClickListener() {
+            plusButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
 
@@ -50,6 +49,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
     }
+
+    //function Harsh
+   /* public void call(Intent intent){
+
+        setContentView(activity_main);
+        Bundle gettitle=getIntent().getExtras();
+        String title= gettitle.getString("listitem");
+
+        listview = (ListView) findViewById(R.id.listview1);
+        final List<String> ListElementsArrayList = new
+                ArrayList<String>(Arrays.asList(ListElements));
+
+
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (MainActivity.this, android.R.layout.simple_list_item_1, ListElementsArrayList);
+
+        listview.setAdapter(adapter);
+        ListElementsArrayList.add(title.toString());
+
+        adapter.notifyDataSetChanged();
+    }
+*/
+
 
     private void navigateToLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
@@ -77,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
             ParseUser.logOut();
             navigateToLogin();
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }

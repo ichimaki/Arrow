@@ -31,10 +31,8 @@
             android:parentActivityName=".LoginActivity"
             android:screenOrientation="portrait"
             tools:ignore="UnusedAttribute" />
-        <activity
-            android:name=".SetNewReminder"
-            android:parentActivityName=".MainActivity"
-            tools:ignore="UnusedAttribute"/>
+        <activity android:name=".SetNewReminder" />
+        <activity android:name=".InvitePeople" />
     </application>
 
 </manifest>

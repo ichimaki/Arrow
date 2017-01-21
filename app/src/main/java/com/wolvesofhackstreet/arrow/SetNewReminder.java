@@ -1,46 +1,49 @@
 package com.wolvesofhackstreet.arrow;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.TimePicker;
 
-import java.util.Calendar;
+
+        import android.app.DatePickerDialog;
+        import android.app.TimePickerDialog;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.DatePicker;
+        import android.widget.EditText;
+        import android.widget.ImageButton;
+        import android.widget.TimePicker;
+
+        import java.util.Calendar;
 
 public class SetNewReminder extends AppCompatActivity implements
         View.OnClickListener {
 
-    EditText titles;
-    Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime;
+    Button INVITE;
+
+    ImageButton btnDatePicker, btnTimePicker;
+    EditText txtDate, txtTime,gettitle;
     private int mYear, mMonth, mDay, mHour, mMinute;
-    Button save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_new_reminder);
 
-        btnDatePicker=(Button)findViewById(R.id.btn_date);
-        btnTimePicker=(Button)findViewById(R.id.btn_time);
-        txtDate=(EditText)findViewById(R.id.in_date);
-        txtTime=(EditText)findViewById(R.id.in_time);
+        btnDatePicker = (ImageButton) findViewById(R.id.btn_date);
+        btnTimePicker = (ImageButton) findViewById(R.id.btn_time);
+        INVITE= (Button)findViewById(R.id.btn_invite);
+        txtDate = (EditText) findViewById(R.id.in_date);
+        txtTime = (EditText) findViewById(R.id.in_time);
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
+        INVITE.setOnClickListener(this);
+
+
 
 
     }
-
-
-
-
-
 
 
     @Override
@@ -88,6 +91,11 @@ public class SetNewReminder extends AppCompatActivity implements
                     }, mHour, mMinute, false);
             timePickerDialog.show();
         }
+        if(v == INVITE){
+            Intent intent=new Intent(SetNewReminder.this, InvitePeople.class);
+            startActivity(intent);
+        }
     }
 
 }
+
