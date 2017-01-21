@@ -1,14 +1,18 @@
 package com.wolvesofhackstreet.arrow;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
+
+import static com.wolvesofhackstreet.arrow.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(activity_main);
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
@@ -32,6 +36,19 @@ public class MainActivity extends AppCompatActivity {
         else {
             Log.i(TAG, currentUser.getUsername());
         }
+
+        // Harsh
+        FloatingActionButton plusButton;
+
+            plusButton= (FloatingActionButton) findViewById(R.id.plus);
+            plusButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    startActivity(new Intent(MainActivity.this, SetNewReminder.class));
+
+                }
+            });
     }
 
     private void navigateToLogin() {
